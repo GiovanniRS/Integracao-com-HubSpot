@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.meetime.hubspot.service.AuthService;
@@ -24,5 +25,11 @@ public class AuthController {
         HttpHeaders headers = new HttpHeaders();
         headers.add(HttpHeaders.LOCATION, url);
         return new ResponseEntity<>(headers, HttpStatus.FOUND);
+    }
+
+    @GetMapping("/callback")
+    public ResponseEntity<String> processOAuthCallback(@RequestParam String code) {
+        //implementar conversao
+        return ResponseEntity.ok("Token armazenado com sucesso!");
     }
 }
