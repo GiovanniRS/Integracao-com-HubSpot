@@ -1,5 +1,7 @@
 package br.com.meetime.hubspot.controller;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,9 @@ public class AuthController {
     @GetMapping("/authorize")
     public ResponseEntity<String> getAuthorizationURL() {
         String url = authService.getAuthorizationURL();
-        return ResponseEntity.ok(url);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.LOCATION, url);
+        return new ResponseEntity<>(headers, HttpStatus.FOUND);
     }
 }
