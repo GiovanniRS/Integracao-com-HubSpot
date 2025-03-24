@@ -26,8 +26,8 @@ public class AuthService {
 
     public String getAuthorizationURL() {
         return "https://app.hubspot.com/oauth/authorize?client_id=" + oAuth2Config.getClientId()
-                + "&scope=contacts"
-                + "&redirect_uri=" + oAuth2Config.getRedirectUri();
+                + "&redirect_uri=" + oAuth2Config.getRedirectUri()
+                + "&scope=" + oAuth2Config.getScopes();
     }
 
     public String changeCodeForToken(String code) {
