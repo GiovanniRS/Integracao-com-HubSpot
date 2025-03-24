@@ -29,7 +29,7 @@ public class AuthController {
 
     @GetMapping("/callback")
     public ResponseEntity<String> processOAuthCallback(@RequestParam String code) {
-        //implementar conversao
+        authService.changeCodeForToken(code);
         return ResponseEntity.ok("Token armazenado com sucesso!");
     }
 }
